@@ -57,6 +57,10 @@ app.post("/tts", async (req, res) => {
 });
 
 // === Start Server ===
+app.get("/", (req, res) => {
+  res.json({ message: "✅ Gemini proxy is alive!" });
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`✅ Gemini proxy running on port ${PORT}`);
