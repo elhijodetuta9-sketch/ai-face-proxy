@@ -57,7 +57,9 @@ app.post("/tts", async (req, res) => {
 });
 
 // === Start Server ===
-const PORT = process.env.PORT || 10000;
-app.listen(PORT, () => {
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`✅ Gemini proxy running on port ${PORT}`);
+  console.log("🌐 Ready at: http://localhost:" + PORT);
 });
+
