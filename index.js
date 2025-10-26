@@ -30,20 +30,17 @@ app.post("/tts", async (req, res) => {
   console.log("🟢 Received text:", text);
 
   try {
-    const geminiResponse = await fetch(
- fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=" + GEMINI_API_KEY, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contents: [
-            {
-              parts: [{ text }],
-            },
-          ],
-        }),
-      }
-    );
-
+   const response = await fetch(
+  "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=" + GEMINI_API_KEY,
+  {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      contents: [{ parts: [{ text: userText }] }],
+    }),
+  }
+);
+    
     const data = await geminiResponse.json();
     console.log("🧠 Gemini raw response:", JSON.stringify(data, null, 2));
 
